@@ -1,4 +1,8 @@
 
+from tasks import show_tasks
+
+
+
 name = input("Enter your name: ")
 
 print(f"Welcome, {name}!")
@@ -20,13 +24,4 @@ while True:
     print("Task added successfully!")
 
 
-print("\nYour tasks:")
-
-if len(tasks) == 0:
-    print("No tasks added.")
-else:
-    number = 1
-
-    for task in tasks:
-        print(f"{number}. {task}")
-        number = number + 1
+show_tasks(tasks)
