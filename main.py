@@ -1,11 +1,26 @@
 
+import os
+from dotenv import load_dotenv
 from tasks import show_tasks
+
+load_dotenv()
+
+admin_choice = input("Do you want to enter Admin Mode? (yes/no): ")
+
+if admin_choice.lower() == "yes":
+    password = input("Enter admin password: ")
+    admin_password = os.getenv("TASK_MANAGER_ADMIN_PASSWORD")
+
+    if password == admin_password:
+        print("Admin Mode enabled.")
+    else:
+        print("Wrong password.")
+        exit()
 
 name = input("Enter your name: ")
 
 print("Welcome", name)
 print("Welcome to Personal Task Manager!")
-
 
 tasks = []
 
