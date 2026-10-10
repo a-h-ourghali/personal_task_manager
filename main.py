@@ -47,7 +47,7 @@ while True:
     priority = input("Enter priority (low/medium/high): ").lower().strip()
 
     if priority not in ["low", "medium", "high"]:
-        print("Invalid priority. Please choose low, medium, or high.")
+        print("Invalid priority! Choose only: low, medium, or high.")
         continue
 
     tasks.append(f"{task} [Priority: {priority}]")
