@@ -33,6 +33,7 @@ with open("tasks.txt", "r") as file:
             old_tasks = line.strip().split(" / ")
             tasks = old_tasks[1:]
 
+
 while True:
     task = input("Enter a task or type done: ")
 
@@ -41,9 +42,17 @@ while True:
 
     if task.strip() == "":
         print("Task cannot be empty")
-    else:
-        tasks.append(task)
-        print("Task added")
+        continue
+
+    priority = input("Enter priority (low/medium/high): ").lower().strip()
+
+    if priority not in ["low", "medium", "high"]:
+        print("Invalid priority. Please choose low, medium, or high.")
+        continue
+
+    tasks.append(f"{task} [Priority: {priority}]")
+    print("Task added")
+
 
 lines = []
 
