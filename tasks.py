@@ -8,5 +8,5 @@ def show_tasks(tasks):
         number = 1
 
         for task in tasks:
-            print(f"{number}. {task}")
+            print(str(number) + ". " + task)
             number = number + 1

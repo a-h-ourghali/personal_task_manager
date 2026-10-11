@@ -1,6 +1,6 @@
 # 📋 Personal Task Manager
 
-A simple and organized command-line task manager built with Python. Add tasks, save them locally, assign priorities, and access Admin Mode with environment-based password authentication.
+A simple command-line task manager built with Python. Add tasks, assign priorities, mark tasks as done, delete tasks, and save them locally.
 
 <p align="left">
   <img src="https://img.shields.io/badge/Python-3-blue?logo=python&logoColor=white" alt="Python">
@@ -13,43 +13,50 @@ A simple and organized command-line task manager built with Python. Add tasks, s
 
 ## 📑 Table of Contents
 
-- [✨ Features](#-features)
-- [📁 Project Structure](#-project-structure)
-- [📄 File Description](#-file-description)
-- [🛠️ Requirements](#️-requirements)
-- [📦 Installation](#-installation)
-- [🔐 Environment Setup](#-environment-setup)
-- [▶️ Usage](#️-usage)
-- [💻 Example Output](#-example-output)
-- [📸 Screenshots](#-screenshots)
-- [🎬 Demo](#-demo)
-- [🗺️ Roadmap](#️-roadmap)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
-- [👨‍💻 Author](#-author)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [File Description](#-file-description)
+- [Requirements](#️-requirements)
+- [Installation](#-installation)
+- [Environment Setup](#-environment-setup)
+- [Usage](#️-usage)
+- [Example Output](#-example-output)
+- [Screenshots](#-screenshots)
+- [Demo](#-demo)
+- [Roadmap](#️-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Author](#-author)
 
 ---
 
 ## ✨ Features
 
 ### ✅ Task Management
+
 - Add tasks through the terminal.
 - Prevent empty tasks from being added.
 - Display tasks in a numbered list.
-- Associate tasks with the user's name.
+- Mark tasks as done.
+- Delete tasks.
+- Associate tasks with a user's name.
 
 ### 🎯 Task Priority
+
 - Assign a priority to each task.
 - Choose from three priority levels: `low`, `medium`, and `high`.
 - Validate priority input and reject unsupported values.
-- Display the selected priority alongside the task.
+- Display the selected priority alongside each task.
 
 ### 💾 Task Storage
+
 - Save tasks locally in `tasks.txt`.
 - Load previously saved tasks.
 - Keep task data on the local machine.
+- Store tasks separately for different names.
 
 ### 🔐 Admin Mode
+
 - Choose whether to enter Admin Mode.
 - Verify the admin password.
 - Load the password from `.env`.
@@ -75,7 +82,7 @@ personal_task_manager/
     └── demo.gif
 ```
 
-> **Note:** `.env` and `tasks.txt` are local files and should be ignored by Git. They should not be included in the public repository.
+**Note:** `.env` and `tasks.txt` are local files and should be ignored by Git. They should not be uploaded to the public repository.
 
 ---
 
@@ -84,7 +91,7 @@ personal_task_manager/
 | File or Folder | Description |
 |---|---|
 | `main.py` | Main program and task management logic |
-| `tasks.py` | Contains task-related functions |
+| `tasks.py` | Contains the task display function |
 | `.env.example` | Example environment variable configuration |
 | `.gitignore` | Specifies files Git should ignore |
 | `requirements.txt` | Lists required Python packages |
@@ -102,7 +109,7 @@ Make sure you have the following installed:
 
 - Python 3
 - `pip`
-- `python-dotenv` (if listed in `requirements.txt`)
+- `python-dotenv`
 
 ---
 
@@ -146,15 +153,9 @@ On Windows PowerShell:
 Copy-Item .env.example .env
 ```
 
-On Linux or macOS:
+### 2. Configure the password
 
-```bash
-cp .env.example .env
-```
-
-### 2. Set a test password
-
-Open `.env` and configure the variable:
+Open `.env` and set the following variable:
 
 ```dotenv
 TASK_MANAGER_ADMIN_PASSWORD=your_password_here
@@ -162,7 +163,7 @@ TASK_MANAGER_ADMIN_PASSWORD=your_password_here
 
 Replace `your_password_here` with your own test password.
 
-> ⚠️ Never commit `.env` or share your real password. Keep `.env.example` in the repository without any real secrets.
+**Important:** Never commit `.env` or share your real password. Keep `.env.example` in the repository without any real secrets.
 
 ---
 
@@ -174,17 +175,29 @@ Replace `your_password_here` with your own test password.
 python main.py
 ```
 
-### 2. Follow the prompts
+### 2. Choose whether to enter Admin Mode
 
-1. Choose `yes` or `no` for Admin Mode.
-2. If you choose `yes`, enter your configured admin password.
-3. Enter your name.
-4. Add tasks one by one.
-5. Choose a priority (`low`, `medium`, or `high`) when prompted.
-6. Type `done` when you finish entering tasks.
-7. Review the displayed task list.
+When the program starts, choose `yes` or `no`.
 
-Run the program again with the same name to load previously saved tasks.
+If you choose `yes`, enter the admin password configured in `.env`.
+
+### 3. Enter your name
+
+Enter your name to load your previously saved tasks.
+
+### 4. Use the menu
+
+The program provides the following options:
+
+1. **Add task** — Add a new task and choose its priority.
+2. **Show tasks** — Display your saved tasks.
+3. **Mark task as done** — Mark a task as completed.
+4. **Delete task** — Remove a task from your list.
+5. **Exit** — Finish and save your changes.
+
+Choose a priority of `low`, `medium`, or `high` when adding a task.
+
+Tasks are saved in `tasks.txt` and loaded again when you run the program with the same name.
 
 ---
 
@@ -194,30 +207,32 @@ The following is an illustrative example. Exact prompts may vary depending on th
 
 ```text
 Do you want to enter Admin Mode? (yes/no): no
-
-Name: Alex
+Enter your name: Alex
 Welcome Alex
+Welcome to Personal Task Manager!
 
-Enter a task or type done: Finish homework
+1. Add task
+2. Show tasks
+3. Mark task as done
+4. Delete task
+5. Exit
+
+Choose an option: 1
+Enter a task: Finish homework
 Enter priority (low/medium/high): high
-Task added
+Task added.
 
-Enter a task or type done: Practice Python
-Enter priority (low/medium/high): medium
-Task added
-
-Enter a task or type done: done
+Choose an option: 2
 
 Your tasks:
 1. Finish homework [Priority: high]
-2. Practice Python [Priority: medium]
 ```
 
 ---
 
 ## 📸 Screenshots
 
-The screenshots below demonstrate the program's interface. Make sure the referenced image files exist in the `Screenshots/` folder.
+The following images demonstrate the program interface. Replace the example image files with your latest screenshots.
 
 ### 🚀 Program Start
 
@@ -239,9 +254,13 @@ Watch the program in action:
 
 ![Personal Task Manager Demo](gifs/demo.gif)
 
+Replace `gifs/demo.gif` with a recent recording that demonstrates the main features, including task priorities.
+
 ---
 
 ## 🗺️ Roadmap
+
+### Completed
 
 - [x] Add tasks through the terminal
 - [x] Validate empty task input
@@ -251,9 +270,14 @@ Watch the program in action:
 - [x] Add Admin Mode
 - [x] Load the admin password from `.env`
 - [x] Add task priorities (`low`, `medium`, `high`)
-- [ ] Add task completion status
-- [ ] Add task editing and deletion
+- [x] Mark tasks as done
+- [x] Delete tasks
 
+### Planned
+
+- [ ] Add task editing
+- [ ] Add more Admin Mode features
+- [ ] Improve the user interface
 ---
 
 ## 🤝 Contributing
